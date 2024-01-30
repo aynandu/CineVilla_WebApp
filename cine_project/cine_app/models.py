@@ -8,6 +8,9 @@ class Users(models.Model):
     email=models.EmailField(max_length=70)
     password=models.CharField(max_length=20)
 
+    def __str__(self):
+        return self.first_Name
+
 class Category(models.Model):
     name=models.CharField(max_length=100,unique=True)
     slug=models.SlugField(max_length=150,unique=True)
