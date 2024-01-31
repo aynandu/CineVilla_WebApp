@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block metadescription %}
+CineVilla - In the world of endless movie choices, this website for sharing, discovering, and discussing 
+the latest movie.
+{% endblock %}
+{% block title %}CineVilla{% endblock %}
+{% block content %}
+<br>
+<div><h3 style="margin-left: 5px;">Action and Adventure</h3></div>
+<div class="container-fluid" style="overflow:auto;background-color: black;">
+    <div class="scrolling-wrapper row flex-row flex-nowrap gx-2 mt-4 pb-4 pt-2 ">  
+        {% for movie in moviedetails.object_list %}
+            {% if movie.category.name == 'Action and Adventure' %}
+                <div class="card card-block col-4 col-9 col-sm-12 col-md-4  col-lg-4 mr-2 border-0"  style="width: 550px; background-color: black;">
+                    <a href="{{movie.get_url}}"><img width="10px" height="250px" src="{{movie.poster.url}}" class="card-img-top" alt="{{movie.title}}"></a>
+                    <div class="card-img-overlay">
+                        <h5 class="card-title" style="color: white;">{{movie.title}}</h5>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+<br>
+<div><h3 style="margin-left: 5px;">Horror</h3> </div>
+<div class="container-fluid" style="overflow:auto;background-color: black;">
+    <div class="scrolling-wrapper row flex-row flex-nowrap gx-2 mt-4 pb-4 pt-2 ">  
+        {% for movie in moviedetails.object_list %}
+            {% if movie.category.name == 'Horror' %}
+                <div class="card card-block col-4 col-9 col-sm-12 col-md-4  col-lg-4 mr-2 border-0"  style="width: 550px; background-color: black;">
+                    <a href="{{movie.get_url}}"><img width="10px" height="250px" src="{{movie.poster.url}}" class="card-img" alt="{{movie.title}}"></a>
+                    <div class="card-img-overlay">
+                        <h5 class="card-title" style="color: white;">{{movie.title}}</h5>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+<br>
+<div><h3 style="margin-left: 5px;">Comedy</h3> </div>
+<div class="container-fluid" style="overflow:auto;background-color: black;">
+    <div class="scrolling-wrapper row flex-row flex-nowrap gx-2 mt-4 pb-4 pt-2 ">  
+        {% for movie in moviedetails.object_list %}
+            {% if movie.category.name == 'Comedy' %}
+                <div class="card card-block col-4 col-9 col-sm-12 col-md-4  col-lg-4 mr-2 border-0"  style="width: 550px; background-color: black;">
+                    <a href="{{movie.get_url}}"><img width="10px" height="250px" src="{{movie.poster.url}}" class="card-img" alt="{{movie.title}}"></a>
+                    <div class="card-img-overlay">
+                        <h5 class="card-title" style="color: white;">{{movie.title}}</h5>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+
+            
+   
+    <div class="mx-auto">
+        {% if moviedetails.paginator.num_pages > 1 %}  
+        <div class="text-center">
+            {% for md in moviedetails.paginator.page_range %}
+            <a href="?page={{md}}" class="btn btn-light btn-sm {% if moviedetails.number == pg %} active {% endif %}">{{md}}</a>
+            {% endfor %}
+        </div>
+        {% endif %}
+    </div>
+    <br>
+</div>
+{% endblock %}
