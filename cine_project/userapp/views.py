@@ -1,0 +1,59 @@
+from django.shortcuts import redirect, render
+from django.contrib.auth.models import User
+from django.contrib import messages,auth
+from cine_app.models import MovieDetails,Category
+# Create your views here.
+def Register(request):
+    if request.method=='POST':
+        username=request.POST['username']
+        first_name=request.POST['first_name']
+        last_name=request.POST['last_name']
+        email=request.POST['email']
+        password=request.POST['password']
+        password1=request.POST['password1']
+        if password==password1:
+            if User.objects.filter(username=username).exists():
+                messages.info(request,"User already taken")
+                return redirect('register')
+            elif User.objects.filter(email=email).exists():
+                messages.info(request,"Email already taken")
+                return redirect('register')
+            else:
+                user=User.objects.create_user(username=username,first_name=first_name,last_name=last_name,email=email,password=password)
+                user.save()
+                return redirect('../login/')
+        else:
+            messages.info(request,'Password error')
+            return redirect('register')
+        return  redirect('/')
+    return render(request,'register.html')
+
+def Login(request):
+    if request.method=='POST':
+        username=request.POST['username']
+        password=request.POST['password']
+        user=auth.authenticate(request,username=username,password=password)
+        if user is not None:
+            auth.login(request,user)
+            return redirect('cine_app:allMoviedetails')
+        else:
+            messages.info(request,'Not a Valid User')
+    return render(request,'login.html')
+
+def Logout(request):
+    auth.logout(request)
+    return redirect('cine_app:allMoviedetails')
+
+def AddMovies(request):
+    if request.method=='POST':
+        title=request.POST.get('title',)
+        description = request.POST.get('description',)
+        trailer_Link = request.POST.get('trailer_Link',)
+        release_date = request.POST.get('release_date',)
+        category_name = request.POST.get('category',)
+        poster = request.FILES['poster']
+        category=Category.objects.get(name=category_name)
+        cinema=MovieDetails(title=title,slug=title,category=category,description=description,release_date=release_date,poster=poster,trailer_Link=trailer_Link )
+        cinema.save()
+        return redirect('cine_app:allMoviedetails')
+    return render(request,'addmovies.html')

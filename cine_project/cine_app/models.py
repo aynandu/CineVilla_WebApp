@@ -2,15 +2,6 @@ from django.db import models
 from django.urls import reverse
 
 # Create your models here.
-class Users(models.Model):
-    username=models.CharField(max_length=10,unique=True)
-    first_Name=models.CharField(max_length=20,unique=True)
-    last_Name=models.CharField(max_length=20)
-    email=models.EmailField(max_length=70)
-    password=models.CharField(max_length=20)
-
-    def __str__(self):
-        return self.first_Name
 
 class Category(models.Model):
     name=models.CharField(max_length=100,unique=True)

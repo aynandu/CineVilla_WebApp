@@ -1,7 +1,8 @@
 from django.shortcuts import render,get_object_or_404,redirect
-from .models import Category,MovieDetails,Users
+from django.urls import reverse
+from .models import Category,MovieDetails
 from django.core.paginator import Paginator,EmptyPage,InvalidPage
-from django.contrib import messages
+from django.contrib import messages,auth
 
 # Create your views here.
 def allMoviedetails(request,c_slug=None):
@@ -30,14 +31,3 @@ def detailedOfMovie(request,c_slug,movie_slug):
         raise e
     return render(request,'details.html',{'details':details})
 
-
-def Login(request):
-    if request.method=='POST':
-        username=request.POST['username']
-        password=request.POST['password']
-        
-        if Users.objects.get(username=username,password=password):
-            return redirect('/')
-        else:
-            messages.info(request,'Not a Valid User')
-    return render(request,'login.html')
