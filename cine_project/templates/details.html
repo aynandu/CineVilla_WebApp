@@ -49,13 +49,15 @@ the latest movie.
         </div>
         <div class ="col-12 col-sm-12 col-md-12 col-lg-6 text-center ">
             <div>
+                <br><h4 style="text-align: left;">Comments</h4>
                 <ul>
                     <br>
                     {% for comment in comments %}
                         <div class="row">
-                            <h6 style="color: white;">Comment by: {{ comment.user }} &nbsp; on&nbsp; &nbsp;{{ comment.date }}</h6>
-                            <h7> --> {{ comment.message }} </h7> <br>
+                            <h6 style="color: white; text-align: justify;"> --> {{ comment.message }} </h6> <br>
+                            <h7 style="color: white; text-align: left;">Comment by: {{ comment.user }} &nbsp; on&nbsp; &nbsp;{{ comment.date }}</h7>
                         </div>  
+                        <hr style="color: rgb(31, 79, 255);">
                     {% endfor %}
                 </ul>
             </div>

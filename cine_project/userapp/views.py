@@ -48,13 +48,14 @@ def Logout(request):
 def AddMovies(request):
     if request.method=='POST':
         title=request.POST.get('title',)
+        m_slug=request.POST.get('slug',)
         description = request.POST.get('description',)
         trailer_Link = request.POST.get('trailer_Link',)
         release_date = request.POST.get('release_date',)
         category_name = request.POST.get('category',)
         poster = request.FILES['poster']
         category=Category.objects.get(name=category_name)
-        cinema=MovieDetails(title=title,slug=title,category=category,description=description,release_date=release_date,poster=poster,trailer_Link=trailer_Link )
+        cinema=MovieDetails(title=title,slug=m_slug,category=category,description=description,release_date=release_date,poster=poster,trailer_Link=trailer_Link)
         cinema.save()
         return redirect('cine_app:allMoviedetails')
     return render(request,'addmovies.html')

@@ -4,7 +4,7 @@ from .models import Category,MovieDetails,CommentSection
 from django.core.paginator import Paginator,EmptyPage,InvalidPage
 from django.contrib import messages,auth
 from .forms import CommentForm
-
+from django.db.models import Sum,Count
 # Create your views here.
 def allMoviedetails(request,c_slug=None):
     c_page=None
@@ -29,11 +29,12 @@ def detailedOfMovie(request,c_slug,movie_slug):
     try:
         details=MovieDetails.objects.get(category__slug=c_slug,slug=movie_slug)
         comments=details.comments.all()
-        CommentSection()
+        
         if request.method=='POST':
             comment_Box=request.POST.get('comment',)
             comment=CommentSection(movie_id=details,user= request.user.username,message=comment_Box)
             comment.save()
+           # sum_of=CommentSection.objects.filter(movie_id=details).aggregate(Sum(movie_id))
             return redirect('cine_app:detailedOfMovie',c_slug=c_slug, movie_slug=movie_slug)
     except Exception as e :
         raise e
