@@ -2,6 +2,7 @@ from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
 from django.contrib import messages,auth
 from cine_app.models import MovieDetails,Category
+from userapp.forms import MovieForm
 # Create your views here.
 def Register(request):
     if request.method=='POST':
@@ -57,3 +58,18 @@ def AddMovies(request):
         cinema.save()
         return redirect('cine_app:allMoviedetails')
     return render(request,'addmovies.html')
+
+def Update(request,id):
+    movie_dat=MovieDetails.objects.get(id=id)
+    formdat=MovieForm(request.POST or None,request.FILES,instance=movie_dat)
+    if formdat.is_valid():
+        formdat.save()
+        return redirect('cine_app:allMoviedetails')
+    return render(request,'update.html',{'form':formdat,'movie':movie_dat})
+def Delete(request,id):
+    if request.method=='POST':
+        Movie=MovieDetails.objects.get(id=id)
+        Movie.delete()
+        return redirect('cine_app:allMoviedetails')
+    return render(request,'delete.html')
+

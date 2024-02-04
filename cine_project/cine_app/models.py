@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -35,3 +36,17 @@ class MovieDetails(models.Model):
         ordering=('title',)
         verbose_name='MovieDetail'
         verbose_name_plural='MovieDetails'
+
+class CommentSection(models.Model):
+    user=models.CharField(max_length=250,blank=False)
+    date=models.DateTimeField(auto_now_add=True)
+    message=models.CharField(max_length=250,blank=False)
+    movie_id=models.ForeignKey(MovieDetails,on_delete=models.CASCADE,related_name='comments')
+
+    def __str__(self):
+        return self.user
+    
+    class Meta:
+        ordering=('user',)
+        verbose_name='CommentSection'
+        verbose_name_plural='CommentSections'

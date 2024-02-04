@@ -22,7 +22,45 @@ the latest movie.
                 <p class="text-justify my_prod_class">{{details.description}}</p>
                 <p class="text-justify my_prod_class">Cast: {{details.actors}}</p>
                 <p class="text-justify my_prod_class">Trailer: <a href="{{details.trailer_Link}}">{{details.trailer_Link}}</a></p>
+                <a class="btn btn-warning" href="{% url 'userapp:update' details.id %}"><strong style="color: white;">Update</strong></a>
+                <a class="btn btn-warning" href="{% url 'userapp:delete' details.id %}"><strong style="color: white;">Delete</strong></a>
+            
+               
+            
             </div>
+    </div>
+</div>
+
+<div class="container">
+    <br>
+    <div class="row">
+        <div class ="col-12 col-sm-12 col-md-12 col-lg-6 text-center ">
+            {% if user.is_authenticated %}
+            <form method="post" style="padding: 15px;" action="" >
+                {% csrf_token %}
+                
+                <div class="row ">
+                    <input style="background-color: black; color: white; width: 400px; height: 45px;" type="text" class="form-control" name="comment" placeholder="Write Your Thoughts...">&nbsp; &nbsp; 
+                    
+                    <input class="btn" style="width: 100px; height: 45px; background-color: rgb(55, 152, 238);color: white;" type="submit">
+                </div>
+            </form>
+            {% endif %}
+        </div>
+        <div class ="col-12 col-sm-12 col-md-12 col-lg-6 text-center ">
+            <div>
+                <ul>
+                    <br>
+                    {% for comment in comments %}
+                        <div class="row">
+                            <h6 style="color: white;">Comment by: {{ comment.user }} &nbsp; on&nbsp; &nbsp;{{ comment.date }}</h6>
+                            <h7> --> {{ comment.message }} </h7> <br>
+                        </div>  
+                    {% endfor %}
+                </ul>
+            </div>
+
+        </div>
     </div>
 </div>
 {% endblock %}

@@ -1,8 +1,9 @@
 from django.shortcuts import render,get_object_or_404,redirect
 from django.urls import reverse
-from .models import Category,MovieDetails
+from .models import Category,MovieDetails,CommentSection
 from django.core.paginator import Paginator,EmptyPage,InvalidPage
 from django.contrib import messages,auth
+from .forms import CommentForm
 
 # Create your views here.
 def allMoviedetails(request,c_slug=None):
@@ -27,7 +28,16 @@ def allMoviedetails(request,c_slug=None):
 def detailedOfMovie(request,c_slug,movie_slug):
     try:
         details=MovieDetails.objects.get(category__slug=c_slug,slug=movie_slug)
+        comments=details.comments.all()
+        CommentSection()
+        if request.method=='POST':
+            comment_Box=request.POST.get('comment',)
+            comment=CommentSection(movie_id=details,user= request.user.username,message=comment_Box)
+            comment.save()
+            return redirect('cine_app:detailedOfMovie',c_slug=c_slug, movie_slug=movie_slug)
     except Exception as e :
         raise e
-    return render(request,'details.html',{'details':details})
+    return render(request,'details.html',{'details':details,'comments':comments})
+
+
 
