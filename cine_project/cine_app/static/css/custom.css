@@ -14,6 +14,12 @@ body{
 body::-webkit-scrollbar{
     display:none ;
 }
+
+.plcdgn::-moz-placeholder{
+    background-color: black;
+    color: white;
+}
+
 .bg_default{
 background-color: black;
 color: whitesmoke;

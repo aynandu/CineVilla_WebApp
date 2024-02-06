@@ -20,7 +20,8 @@
                 <form method="post"  enctype="multipart/form-data" style="padding: 15px;">
                     {% csrf_token %}
                     {{form.as_p}}
-                    <br><input class="btn" type="submit" placeholder="Login" style="background-color: rgb(119, 140, 232);color: white;"><br>
+                    <br><input class="btn" type="submit" placeholder="update" style="background-color: rgb(119, 140, 232);color: white;">
+                    <a class="btn"  href="{% url 'cine_app:allMoviedetails' %}" type="submit" placeholder="Home" style="background-color: rgb(30, 249, 77);color: white;">Go Home</a><br>
                 </form>
             </div>
         </div>

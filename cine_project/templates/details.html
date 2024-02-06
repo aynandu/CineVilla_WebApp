@@ -22,7 +22,7 @@ the latest movie.
                 <p class="text-justify my_prod_class">{{details.description}}</p>
                 <p class="text-justify my_prod_class">Cast: {{details.actors}}</p>
                 <p class="text-justify my_prod_class">Trailer: <a href="{{details.trailer_Link}}">{{details.trailer_Link}}</a></p>
-                <a class="btn btn-warning" href="{% url 'userapp:update' details.id %}"><strong style="color: white;">Update</strong></a>
+                <a class="btn btn-warning" href="{% url 'userapp:updatedetails' details.id %}"><strong style="color: white;">Update</strong></a>
                 <a class="btn btn-warning" href="{% url 'userapp:delete' details.id %}"><strong style="color: white;">Delete</strong></a>
             
                
@@ -40,9 +40,9 @@ the latest movie.
                 {% csrf_token %}
                 
                 <div class="row ">
-                    <input style="background-color: black; color: white; width: 400px; height: 45px;" type="text" class="form-control" name="comment" placeholder="Write Your Thoughts...">&nbsp; &nbsp; 
+                    <input style="  color: white; width: 400px; height: 45px;" type="text" class="form-control plcdgn" name="comment" placeholder="Write Your Thoughts...">&nbsp; &nbsp; 
                     
-                    <input class="btn" style="width: 100px; height: 45px; background-color: rgb(55, 152, 238);color: white;" type="submit">
+                    <input class="btn " style="width: 100px; height: 45px; background-color: rgb(55, 152, 238);color: white;" type="submit">
                 </div>
             </form>
             {% endif %}

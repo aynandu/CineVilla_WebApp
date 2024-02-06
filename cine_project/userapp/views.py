@@ -1,8 +1,10 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
 from django.contrib import messages,auth
+from django.urls import reverse_lazy
 from cine_app.models import MovieDetails,Category
 from userapp.forms import MovieForm
+from django.views.generic.edit import UpdateView
 # Create your views here.
 def Register(request):
     if request.method=='POST':
@@ -59,6 +61,13 @@ def AddMovies(request):
         cinema.save()
         return redirect('cine_app:allMoviedetails')
     return render(request,'addmovies.html')
+
+class ToDoUpdateView(UpdateView):
+    model = MovieDetails
+    template_name = 'update.html'
+    fields = ('title','description','actors','poster','release_date','trailer_Link')
+    def get_success_url(self):
+        return  reverse_lazy('userapp:updatedetails',kwargs={'pk':self.object.id})
 
 def Update(request,id):
     movie_dat=MovieDetails.objects.get(id=id)
