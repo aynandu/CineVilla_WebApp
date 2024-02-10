@@ -7,184 +7,49 @@ the latest movie.
 {% block title %}CineVilla{% endblock %}
 {% block content %}
 <br>
-<div><h3 style="margin-left: 5px;">Action and Adventure</h3></div>
-<div class="container-fluid" style="overflow:auto;background-color: black;">
-    <div class="scrolling-wrapper row flex-row flex-nowrap gx-2 mt-4 pb-4 pt-2 ">  
-        {% for movie in moviedetails.object_list %}
-            {% if movie.category.name == 'Action and Adventure' %}
-                <div class="card card-block col-4 col-9 col-sm-12 col-md-4  col-lg-4 mr-2 border-0"  style="width: 550px; background-color: black;">
-                    <a href="{{movie.get_url}}"><img width="10px"  height="250px" src="{{movie.poster.url}}" class="card-img-top" alt="{{movie.title}}"></a>
-                    <a href="{{movie.get_url}}"><div class="card-img-overlay">
-                         <h5 class="card-title" style="color: white;">{{movie.title}}</h5>
-                    </div></a>
-                </div>
-            {% endif %}
-        {% endfor %}
-    </div>
-</div>
-<br>
-<div><h3 style="margin-left: 5px;">Horror</h3> </div>
-<div class="container-fluid" style="overflow:auto;background-color: black;">
-    <div class="scrolling-wrapper row flex-row flex-nowrap gx-2 mt-4 pb-4 pt-2 ">  
-        {% for movie in moviedetails.object_list %}
-            {% if movie.category.name == 'Horror' %}
-                <div class="card card-block col-4 col-9 col-sm-12 col-md-4  col-lg-4 mr-2 border-0"  style="width: 550px; background-color: black;">
-                    <a href="{{movie.get_url}}"><img width="10px" height="250px" src="{{movie.poster.url}}" class="card-img" alt="{{movie.title}}"></a>
-                    <a href="{{movie.get_url}}"><div class="card-img-overlay">
-                        <h5 class="card-title" style="color: white;">{{movie.title}}</h5>
-                    </div></a>
-                </div>
-            {% endif %}
-        {% endfor %}
-    </div>
-</div>
-<br>
-<div><h3 style="margin-left: 5px;">Comedy</h3> </div>
-<div class="container-fluid" style="overflow:auto;background-color: black;">
-    <div class="scrolling-wrapper row flex-row flex-nowrap gx-2 mt-4 pb-4 pt-2 ">  
-        {% for movie in moviedetails.object_list %}
-            {% if movie.category.name == 'Comedy' %}
-                <div class="card card-block col-4 col-9 col-sm-12 col-md-4  col-lg-4 mr-2 border-0"  style="width: 550px; background-color: black;">
-                    <a href="{{movie.get_url}}"><img width="10px" height="250px" src="{{movie.poster.url}}" class="card-img" alt="{{movie.title}}"></a>
-                    <a href="{{movie.get_url}}"><div class="card-img-overlay">
-                        <h5 class="card-title" style="color: white;">{{movie.title}}</h5>
-                    </div></a>
-                </div>
-            {% endif %}
-        {% endfor %}
-    </div>
-</div>
-<br>
-<div><h3 style="margin-left: 5px;">Documentary</h3> </div>
-<div class="container-fluid" style="overflow:auto;background-color: black;">
-    <div class="scrolling-wrapper row flex-row flex-nowrap gx-2 mt-4 pb-4 pt-2 ">  
-        {% for movie in moviedetails.object_list %}
-            {% if movie.category.name == 'Documentary' %}
-                <div class="card card-block col-4 col-9 col-sm-12 col-md-4  col-lg-4 mr-2 border-0"  style="width: 550px; background-color: black;">
-                    <a href="{{movie.get_url}}"><img width="10px" height="250px" src="{{movie.poster.url}}" class="card-img" alt="{{movie.title}}"></a>
-                    <a href="{{movie.get_url}}"><div class="card-img-overlay">
-                        <h5 class="card-title" style="color: white;">{{movie.title}}</h5>
-                    </div></a>
-                </div>
-            {% endif %}
-        {% endfor %}
-    </div>
-</div>
-<br>
-<br>
-<div><h3 style="margin-left: 5px;">Drama</h3> </div>
-<div class="container-fluid" style="overflow:auto;background-color: black;">
-    <div class="scrolling-wrapper row flex-row flex-nowrap gx-2 mt-4 pb-4 pt-2 ">  
-        {% for movie in moviedetails.object_list %}
-            {% if movie.category.name == 'Drama' %}
-                <div class="card card-block col-4 col-9 col-sm-12 col-md-4  col-lg-4 mr-2 border-0"  style="width: 550px; background-color: black;">
-                    <a href="{{movie.get_url}}"><img width="10px" height="250px" src="{{movie.poster.url}}" class="card-img" alt="{{movie.title}}"></a>
-                    <a href="{{movie.get_url}}"><div class="card-img-overlay">
-                        <h5 class="card-title" style="color: white;">{{movie.title}}</h5>
-                    </div></a>
-                </div>
-            {% endif %}
-        {% endfor %}
-    </div>
-</div>
-<br>
-<div><h3 style="margin-left: 5px;">Fantasy</h3> </div>
-<div class="container-fluid" style="overflow:auto;background-color: black;">
-    <div class="scrolling-wrapper row flex-row flex-nowrap gx-2 mt-4 pb-4 pt-2 ">  
-        {% for movie in moviedetails.object_list %}
-            {% if movie.category.name == 'Fantasy' %}
-                <div class="card card-block col-4 col-9 col-sm-12 col-md-4  col-lg-4 mr-2 border-0"  style="width: 550px; background-color: black;">
-                    <a href="{{movie.get_url}}"><img width="10px" height="250px" src="{{movie.poster.url}}" class="card-img" alt="{{movie.title}}"></a>
-                    <a href="{{movie.get_url}}"><div class="card-img-overlay">
-                        <h5 class="card-title" style="color: white;">{{movie.title}}</h5>
-                    </div></a>
-                </div>
-            {% endif %}
-        {% endfor %}
-    </div>
-</div>
-<br>
-<div><h3 style="margin-left: 5px;">Anime</h3> </div>
-<div class="container-fluid" style="overflow:auto;background-color: black;">
-    <div class="scrolling-wrapper row flex-row flex-nowrap gx-2 mt-4 pb-4 pt-2 ">  
-        {% for movie in moviedetails.object_list %}
-            {% if movie.category.name == 'Anime' %}
-                <div class="card card-block col-4 col-9 col-sm-12 col-md-4  col-lg-4 mr-2 border-0"  style="width: 550px; background-color: black;">
-                    <a href="{{movie.get_url}}"><img width="10px" height="250px" src="{{movie.poster.url}}" class="card-img" alt="{{movie.title}}"></a>
-                    <a href="{{movie.get_url}}"><div class="card-img-overlay">
-                        <h5 class="card-title" style="color: white;">{{movie.title}}</h5>
-                    </div></a>
-                </div>
-            {% endif %}
-        {% endfor %}
-    </div>
-</div>
-<br>
-<div><h3 style="margin-left: 5px;">Kids</h3> </div>
-<div class="container-fluid" style="overflow:auto;background-color: black;">
-    <div class="scrolling-wrapper row flex-row flex-nowrap gx-2 mt-4 pb-4 pt-2 ">  
-        {% for movie in moviedetails.object_list %}
-            {% if movie.category.name == 'Kids' %}
-                <div class="card card-block col-4 col-9 col-sm-12 col-md-4  col-lg-4 mr-2 border-0"  style="width: 550px; background-color: black;">
-                    <a href="{{movie.get_url}}"><img width="10px" height="250px" src="{{movie.poster.url}}" class="card-img" alt="{{movie.title}}"></a>
-                    <a href="{{movie.get_url}}"><div class="card-img-overlay">
-                        <h5 class="card-title" style="color: white;">{{movie.title}}</h5>
-                    </div></a>
-                </div>
-            {% endif %}
-        {% endfor %}
-    </div>
-</div>
-<br>
-<br>
-<div><h3 style="margin-left: 5px;">Mystery and Thriller</h3> </div>
-<div class="container-fluid" style="overflow:auto;background-color: black;">
-    <div class="scrolling-wrapper row flex-row flex-nowrap gx-2 mt-4 pb-4 pt-2 ">  
-        {% for movie in moviedetails.object_list %}
-            {% if movie.category.name == 'Mystery and Thriller' %}
-                <div class="card card-block col-4 col-9 col-sm-12 col-md-4  col-lg-4 mr-2 border-0"  style="width: 550px; background-color: black;">
-                    <a href="{{movie.get_url}}"><img width="10px" height="250px" src="{{movie.poster.url}}" class="card-img" alt="{{movie.title}}"></a>
-                    <a href="{{movie.get_url}}"><div class="card-img-overlay">
-                        <h5 class="card-title" style="color: white;">{{movie.title}}</h5>
-                    </div></a>
-                </div>
-            {% endif %}
-        {% endfor %}
-    </div>
-</div>
-<br>
-<div><h3 style="margin-left: 5px;">Romance</h3> </div>
-<div class="container-fluid" style="overflow:auto;background-color: black;">
-    <div class="scrolling-wrapper row flex-row flex-nowrap gx-2 mt-4 pb-4 pt-2 ">  
-        {% for movie in moviedetails.object_list %}
-            {% if movie.category.name == 'Romance' %}
-                <div class="card card-block col-4 col-9 col-sm-12 col-md-4  col-lg-4 mr-2 border-0"  style="width: 550px; background-color: black;">
-                    <a href="{{movie.get_url}}"><img width="10px" height="250px" src="{{movie.poster.url}}" class="card-img" alt="{{movie.title}}"></a>
-                    <a href="{{movie.get_url}}"><div class="card-img-overlay">
-                        <h5 class="card-title" style="color: white;">{{movie.title}}</h5>
-                    </div></a>
-                </div>
-            {% endif %}
-        {% endfor %}
-    </div>
-</div>
-<br>
+{% if c_slug is None  %}
+    {% for cat in links %}
+        <div><h3 style="margin-left: 5px;">{{cat.name}}</h3></div>
+        <div class="container-fluid" style="overflow:auto;background-color: black;">
+            <div class="scrolling-wrapper row flex-row flex-nowrap gx-2 mt-4 pb-4 pt-2 ">  
+                {% for movie in moviedetails.object_list %}
+                    {% if movie.category.name == cat.name %}
+                        <div class="card card-block col-4 col-9 col-sm-12 col-md-4  col-lg-4 mr-2 border-0"  style="width: 550px; background-color: black;">
+                            <a href="{{movie.get_url}}"><img width="10px"  height="250px" src="{{movie.poster.url}}" class="card-img-top" alt="{{movie.title}}"></a>
+                            <a href="{{movie.get_url}}"><div class="card-img-overlay">
+                                <h5 class="card-title" style="color: white;">{{movie.title}}</h5>
+                            </div></a>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+        <br>
+    {% endfor %}
 
-<div><h3 style="margin-left: 5px;">Science Fiction</h3> </div>
-<div class="container-fluid" style="overflow:auto;background-color: black;">
-    <div class="scrolling-wrapper row flex-row flex-nowrap gx-2 mt-4 pb-4 pt-2 ">  
-        {% for movie in moviedetails.object_list %}
-            {% if movie.category.name == 'Science Fiction' %}
-                <div class="card card-block col-4 col-9 col-sm-12 col-md-4  col-lg-4 mr-2 border-0"  style="width: 550px; background-color: black;">
-                    <a href="{{movie.get_url}}"><img width="10px" height="250px" src="{{movie.poster.url}}" class="card-img" alt="{{movie.title}}"></a>
-                    <a href="{{movie.get_url}}"><div class="card-img-overlay">
-                        <h5 class="card-title" style="color: white;">{{movie.title}}</h5>
-                    </div></a>
+{% else %}
+
+   
+            <div><h3 style="margin-left: 5px;">{{movie.category.name}}</h3></div>
+            <div class="container-fluid" style="overflow:auto;background-color: black;">
+                
+                <div class="scrolling-wrapper row flex-row flex-nowrap gx-2 mt-4 pb-4 pt-2 ">  
+                    {% for movie in moviedetails.object_list %}
+                            <div class="card card-block col-4 col-9 col-sm-12 col-md-4  col-lg-4 mr-2 border-0"  style="width: 550px; background-color: black;">
+                                <a href="{{movie.get_url}}"><img width="10px"  height="250px" src="{{movie.poster.url}}" class="card-img-top" alt="{{movie.title}}"></a>
+                                <a href="{{movie.get_url}}">
+                                    <div class="card-img-overlay">
+                                        <h5 class="card-title" style="color: white;">{{movie.title}}</h5>
+                                    </div></a>
+                            </div>
+                   {% endfor %}
                 </div>
-            {% endif %}
-        {% endfor %}
-    </div>
-</div>
+               
+            </div>
+            <br>
+
+
+{% endif %}
 
             
    

@@ -14,7 +14,7 @@ def allMoviedetails(request,c_slug=None):
         movie_list=MovieDetails.objects.all().filter(category=c_page)
     else:
         movie_list=MovieDetails.objects.all()
-    paginator=Paginator(movie_list,6)
+    paginator=Paginator(movie_list,50)
     try:
         page=int(request.GET.get('page','1'))
     except:
@@ -23,7 +23,7 @@ def allMoviedetails(request,c_slug=None):
         movies=paginator.page(page)
     except(EmptyPage,InvalidPage):
         movies=Paginator.page(paginator.num_pages)
-    return render(request,'home.html',{'category':c_page,'moviedetails':movies})
+    return render(request,'home.html',{'category':c_page,'moviedetails':movies,'c_slug':c_slug})
 
 def detailedOfMovie(request,c_slug,movie_slug):
     try:
